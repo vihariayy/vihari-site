@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vihari Ayyalasomayajula | Founder, Builder, Atlanta</title>
 <meta name="description" content="Vihari Ayyalasomayajula is a founder and builder in Atlanta, GA. Founder of NextLine AI, leader of community programs that have reached thousands of families, and researcher merging sustainability and technology." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Vihari Ayyalasomayajula | Founder, Builder, Atlanta" />
+<meta property="og:description" content="Founder of NextLine AI. Builder of community programs reaching thousands of families. Researching sustainability and technology with professors at NYU and Stanford." />
+<meta property="og:url" content="https://www.vihari.life/" />
+<meta property="og:image" content="https://www.vihari.life/vihari.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Vihari Ayyalasomayajula | Founder, Builder, Atlanta" />
+<meta name="twitter:description" content="Founder of NextLine AI. Builder of community programs reaching thousands of families across Atlanta." />
+<meta name="twitter:image" content="https://www.vihari.life/vihari.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vihari Ayyalasomayajula",
+  "url": "https://www.vihari.life/",
+  "image": "https://www.vihari.life/vihari.jpg",
+  "jobTitle": "Founder & CEO, NextLine AI",
+  "address": {"@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA", "addressCountry": "US"},
+  "sameAs": ["https://www.linkedin.com/in/vihari-ayyalasomayajula-b4b047334", "https://nextline-ai.com"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -164,6 +185,45 @@ nav{
 @keyframes ring{0%,100%{opacity:.25}50%{opacity:.9}}
 .ans-flash{animation:ansflash 4s ease-in-out infinite}
 @keyframes ansflash{0%,55%{opacity:.4}65%,90%{opacity:1}100%{opacity:.4}}
+.hub-pulse{animation:hubpulse 4s ease-out infinite;transform-origin:230px 165px}
+@keyframes hubpulse{0%,38%{opacity:0;transform:scale(.6)}48%{opacity:.55;transform:scale(1)}70%,100%{opacity:0;transform:scale(1.5)}}
+.board-feed{
+  margin-top:12px;padding:10px 14px;border-radius:10px;background:rgba(234,241,252,.05);
+  border:1px solid var(--line-light);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+  color:rgba(234,241,252,.75);display:flex;gap:10px;align-items:baseline;min-height:38px;
+}
+.board-feed .fl{color:var(--peach);flex:0 0 auto;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase}
+.board-feed .cursor{animation:blink 1s steps(1) infinite;color:var(--peach)}
+@keyframes blink{50%{opacity:0}}
+/* nav underline */
+.nav-links a:not(.btn){position:relative}
+.nav-links a:not(.btn)::after{
+  content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;
+  background:var(--cobalt);transition:right .25s cubic-bezier(.2,.7,.2,1);
+}
+.nav-links a:not(.btn):hover::after,
+.nav-links a:not(.btn).active::after{right:0}
+.nav-links a:not(.btn).active{opacity:1;color:var(--cobalt)}
+
+/* hero entrance choreography */
+@keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero .line-tag{animation:riseIn .7s .05s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{animation:riseIn .8s .15s cubic-bezier(.2,.7,.2,1) both}
+.hero .lede{animation:riseIn .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.hero-ctas{animation:riseIn .8s .42s cubic-bezier(.2,.7,.2,1) both}
+.hero-meta{animation:riseIn .8s .54s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){
+  .hero .line-tag,.hero h1,.hero .lede,.hero-ctas,.hero-meta{animation:none}
+}
+
+/* footer watermark */
+.watermark{
+  font-family:var(--display);font-weight:800;letter-spacing:-.04em;
+  font-size:clamp(4rem,16vw,13rem);line-height:.9;text-align:center;
+  color:transparent;-webkit-text-stroke:1px rgba(234,241,252,.12);
+  user-select:none;pointer-events:none;margin:30px 0 -10px;white-space:nowrap;overflow:hidden;
+}
 
 /* ---------- ticker ---------- */
 .ticker{
@@ -373,7 +433,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
   <div class="wrap hero-grid">
     <div>
       <div class="line-tag">Vihari Ayyalasomayajula · Atlanta, GA</div>
-      <h1>I build things that <em>pick up</em> when no one else answers.</h1>
+      <h1>Building things that <em>pick up</em> when no one else answers.</h1>
       <p class="lede">Founder of NextLine AI. Builder of community programs that have reached thousands of families across Atlanta. Currently studying the space where technology, business, and sustainability collide.</p>
       <div class="hero-ctas">
         <a class="btn btn-solid" href="#nextline">See what I'm building</a>
@@ -388,10 +448,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 
     <div class="board rv" id="board">
       <div class="board-head">
-        <span class="mono">NextLine routing board</span>
-        <span class="live-dot">Live</span>
+        <span class="mono">NextLine routing board · demo</span>
+        <span class="live-dot">Simulated</span>
       </div>
       <svg viewBox="0 0 460 330" role="img" aria-label="Diagram of a missed customer call being rerouted through NextLine AI to a business that answers">
+        <circle cx="230" cy="165" r="46" fill="none" stroke="#1E4FFF" stroke-width="1.5" class="hub-pulse"/>
         <!-- caller -->
         <g>
           <circle cx="60" cy="165" r="26" fill="none" stroke="#FFB48A" stroke-width="1.5"/>
@@ -441,8 +502,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
           <animateMotion dur="4s" repeatCount="indefinite" path="M 60 165 L 230 165 L 385 166" keyPoints="0;0.52;0.52;1;1" keyTimes="0;0.35;0.45;0.8;1" calcMode="linear"/>
           <animate attributeName="opacity" values=".5;.5;.2;.5;0" keyTimes="0;0.35;0.45;0.8;1" dur="4s" repeatCount="indefinite"/>
         </circle>
+        <circle r="4" fill="#EAF1FC" opacity=".7">
+          <animateMotion dur="4s" begin="2s" repeatCount="indefinite" path="M 60 165 L 230 165 L 385 166" keyPoints="0;0.52;0.52;1;1" keyTimes="0;0.35;0.45;0.8;1" calcMode="linear"/>
+          <animate attributeName="opacity" values=".7;.7;.35;.7;0" keyTimes="0;0.35;0.45;0.8;1" dur="4s" begin="2s" repeatCount="indefinite"/>
+        </circle>
         <text x="230" y="300" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="2" fill="rgba(234,241,252,.45)">CALL ROUTED IN SECONDS · ZERO LOST CUSTOMERS</text>
       </svg>
+      <div class="board-feed" aria-hidden="true">
+        <span class="fl">Live feed</span>
+        <span><span id="feedText"></span><span class="cursor">▌</span></span>
+      </div>
       <div class="board-foot">Every missed call is revenue walking away. I built the layer that catches it.</div>
     </div>
   </div>
@@ -473,7 +542,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         <h3>It started with a snake in my garage.</h3>
         <p>One night I found a snake in my garage and started calling pest control companies. I called more than 25 of them. Not a single one picked up. The snake didn't care that it was after hours, and neither did I.</p>
         <p>That night I realized service businesses lose an enormous amount of revenue to a problem as simple as an unanswered phone. So my co-founder and I built the fix: an AI layer that answers instantly, qualifies the job, and routes it to whoever can actually take it.</p>
-        <p>We launched this year. Today NextLine serves 20+ paying businesses on monthly subscriptions, and the NextLine Network connects customers to available partners when the original company can't answer. We're now expanding beyond home services into new industries, including healthcare, where we've already signed our first partner.</p>
+        <p>We only started building recently. In that short window, NextLine has grown to 20+ paying businesses on monthly subscriptions and is already generating revenue, with the NextLine Network connecting customers to available partners whenever the original company can't answer. We're now expanding beyond home services into new industries, including healthcare, where we've already signed our first partner.</p>
       </div>
 
       <div class="nl-points">
@@ -491,7 +560,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         </div>
         <div class="nl-point rv d4">
           <h4><span>04</span>The traction</h4>
-          <p>Launched this year. 20+ paying clients on recurring subscriptions, now expanding into healthcare with our first partner already signed.</p>
+          <p>Started building recently. In a short period: 20+ paying clients on recurring subscriptions, real revenue, and active expansion into healthcare with our first partner already signed.</p>
         </div>
       </div>
     </div>
@@ -513,38 +582,38 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 
     <div class="work-list">
       <div class="work-item rv">
-        <span class="role">Marketing Development</span>
+        <span class="role">Growth, Product &amp; Strategy</span>
         <div>
           <h3>OpenSwarm <span class="badge">Backed by Entrepreneur First</span></h3>
-          <p>Worked on developing marketing at OpenSwarm, a startup backed by Entrepreneur First. Helped shape how a technical product gets positioned, communicated, and put in front of the right audience.</p>
+          <p>Operated across the full stack of company building at OpenSwarm, a startup backed by Entrepreneur First. Shaped product positioning, built the marketing engine, and translated deeply technical work into a story that customers and investors actually buy. The kind of work where growth, product, and strategy are the same job.</p>
         </div>
       </div>
       <div class="work-item rv">
-        <span class="role">AI Solutions Developer</span>
+        <span class="role">AI Engineering &amp; Client Delivery</span>
         <div>
           <h3>Stratton Agency</h3>
-          <p>Built and deployed AI voice agents, workflow automation systems, and lead generation tools for businesses across North America, working directly with founders and operators based in San Francisco. Delivered custom AI solutions to real clients across multiple industries.</p>
+          <p>Built and shipped AI voice agents, workflow automation systems, and lead generation tools that drove real revenue for businesses across North America. Owned solutions end to end, from architecture to deployment to client results, working directly with San Francisco founders and operators building successful ventures of their own.</p>
         </div>
       </div>
       <div class="work-item rv">
-        <span class="role">Software &amp; Marketing Associate</span>
+        <span class="role">Software, AI &amp; Brand Growth</span>
         <div>
           <h3>Venture-backed biotech startup</h3>
-          <p>Joined a biotech and entertainment startup valued at $75M after a $10M seed round. Implemented AI into core business operations and led marketing initiatives that scaled the brand to millions of viewers across social media.</p>
+          <p>Joined a biotech and entertainment startup valued at $75M after a $10M seed round and worked both sides of the company: engineered AI into core business operations while leading marketing initiatives that scaled the brand to millions of viewers and viral reach across social media. Built the product and built the audience for it.</p>
         </div>
       </div>
       <div class="work-item rv">
-        <span class="role">Core Technology Lead</span>
+        <span class="role">Technology, Product &amp; Operations</span>
         <div>
           <h3>Andros</h3>
-          <p>Oversaw all technical operations and development at an early-stage San Francisco startup, collaborating with a high-profile network of professionals, celebrities, and influencers building the platform from the ground up.</p>
+          <p>Ran technology at an early-stage San Francisco startup as the core technical lead, owning all technical operations and product development from the ground up. Built alongside a high-profile network of professionals, celebrities, and influencers, turning their vision into a working platform.</p>
         </div>
       </div>
       <div class="work-item rv">
         <span class="role">STEM Intern</span>
         <div>
           <h3>Georgia Tech</h3>
-          <p>Worked with Georgia Tech professors and students to facilitate STEM and leadership programming for 250+ students. Taught everything from introductory coding to mathematics, adapting curriculum complexity to each student's level while making technology genuinely exciting for young learners.</p>
+          <p>Partnered with Georgia Tech professors and students to design and deliver STEM and leadership programming for 250+ students. Built curriculum from introductory coding to mathematics, calibrated to each student's level, and made technology genuinely exciting for the next generation of builders.</p>
         </div>
       </div>
     </div>
@@ -599,11 +668,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
       <div class="imp-card rv d1">
         <h3>Sierra Project Foundation</h3>
         <p>Interned with an international nonprofit spanning Ecuador, Chile, India, Liberia, Ghana, and the US that teaches youth about health through comic-based storytelling. Helped create and distribute educational comics for underserved communities worldwide.</p>
-      </div>
-
-      <div class="imp-card rv d2">
-        <h3>Georgia Tech STEM Outreach</h3>
-        <p>Brought coding and STEM education to students in grades 1 through 9 alongside Georgia Tech professors and students, designing engaging hands-on lessons that spark lasting interest in technology and science.</p>
       </div>
     </div>
   </div>
@@ -687,7 +751,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 
     <div class="cal-wrap rv">
       <!-- Calendly inline widget begin -->
-      <div class="calendly-inline-widget" data-url="https://calendly.com/vihari-ayyalasomayajula/book-a-meeting-with-me" style="min-width:320px;height:700px;"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/vihari-ayyalasomayajula/book-a-meeting-with-me?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       <!-- Calendly inline widget end -->
     </div>
@@ -735,8 +799,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
     </div>
     <div class="foot-base">
       <span class="mono">© <span id="yr"></span> Vihari Ayyalasomayajula</span>
+      <a class="mono" href="#top" style="text-decoration:none">Back to top ↑</a>
       <span class="mono">Atlanta, GA · Built with intent</span>
     </div>
+    <div class="watermark" aria-hidden="true">VIHARI</div>
   </div>
 </footer>
 
@@ -789,6 +855,49 @@ if(board && !reduce && matchMedia('(pointer:fine)').matches){
   board.addEventListener('mouseleave',()=>{ board.style.transform=''; });
 }
 
+// board live feed typewriter
+const feedEl = document.getElementById('feedText');
+const feedMsgs = [
+  'Answered: emergency HVAC call, 11:42 PM',
+  'Booked: pest inspection, tomorrow 8:00 AM',
+  'Routed: locksmith lockout to Partner B',
+  'Answered: wildlife removal, after hours',
+  'Booked: healthcare partner intake call',
+  'Routed: overflow call, zero wait time'
+];
+if(feedEl){
+  if(reduce){
+    feedEl.textContent = feedMsgs[0];
+  } else {
+    let mi = 0;
+    const typeMsg = ()=>{
+      const msg = feedMsgs[mi]; let ci = 0;
+      feedEl.textContent = '';
+      const typer = setInterval(()=>{
+        feedEl.textContent = msg.slice(0, ++ci);
+        if(ci >= msg.length){
+          clearInterval(typer);
+          setTimeout(()=>{ mi = (mi+1)%feedMsgs.length; typeMsg(); }, 2600);
+        }
+      }, 34);
+    };
+    typeMsg();
+  }
+}
+
+// magnetic buttons
+if(!reduce && matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('mousemove',(ev)=>{
+      const r = b.getBoundingClientRect();
+      const x = (ev.clientX - r.left)/r.width - .5;
+      const y = (ev.clientY - r.top)/r.height - .5;
+      b.style.transform = `translate(${x*6}px, ${y*6 - 2}px)`;
+    });
+    b.addEventListener('mouseleave',()=>{ b.style.transform=''; });
+  });
+}
+
 // ticker duplication for seamless loop
 const t = document.getElementById('tickerTrack');
 t.innerHTML += t.innerHTML;
@@ -807,6 +916,17 @@ nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 
 // year
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// scroll-spy: highlight current section in nav
+const spyLinks = [...document.querySelectorAll('.nav-links a:not(.btn)')].filter(a=>a.hash);
+const spyTargets = spyLinks.map(a=>document.querySelector(a.hash)).filter(Boolean);
+const spy = new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    spyLinks.forEach(a=>a.classList.toggle('active', a.hash === '#'+e.target.id));
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+spyTargets.forEach(t=>spy.observe(t));
 </script>
 </body>
 </html>
