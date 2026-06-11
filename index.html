@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vihari Ayyalasomayajula | Founder, Builder, Atlanta</title>
-<meta name="description" content="Vihari Ayyalasomayajula is a founder and builder in Atlanta, GA. Founder of NextLine AI, leader of community programs that have reached thousands of families, and researcher working on sustainability and technology." />
+<meta name="description" content="Vihari Ayyalasomayajula is a founder and builder in Atlanta, GA. Founder of NextLine AI, leader of community programs that have reached thousands of families, and researcher merging sustainability and technology." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -35,7 +35,7 @@ body{
 }
 ::selection{background:var(--cobalt);color:var(--white)}
 a{color:inherit}
-img{max-width:100%}
+img{max-width:100%;display:block}
 
 /* ---------- utility ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
@@ -54,49 +54,80 @@ h2.sec-title{
   font-weight:700;font-size:clamp(2.1rem,4.6vw,3.6rem);
   line-height:1.04;letter-spacing:-.02em;margin-bottom:18px;
 }
-.sec-sub{max-width:640px;font-size:1.06rem;color:rgba(8,21,52,.72)}
+.sec-sub{max-width:660px;font-size:1.06rem;color:rgba(8,21,52,.72)}
 .dark .sec-sub{color:rgba(234,241,252,.72)}
 section{padding:110px 0;position:relative}
 .dark{background:var(--ink);color:var(--sky)}
 
 /* reveal on scroll */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
 .rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-delay:0s!important}
   html{scroll-behavior:auto}
+}
+
+/* ---------- scroll signal line ---------- */
+.signal{
+  position:fixed;top:0;left:0;right:0;height:4px;z-index:90;
+  background:rgba(8,21,52,.08);pointer-events:none;
+}
+.signal-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--cobalt),var(--peach));
+  position:relative;transition:width .08s linear;
+}
+.signal-fill::after{
+  content:"";position:absolute;right:-7px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;border-radius:50%;
+  background:var(--peach);
+  box-shadow:0 0 0 4px rgba(255,180,138,.3),0 0 18px rgba(255,180,138,.85);
 }
 
 /* ---------- nav ---------- */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
+  position:fixed;top:4px;left:0;right:0;z-index:50;
   background:rgba(234,241,252,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .logo{font-family:var(--display);font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.01em}
 .logo span{color:var(--cobalt)}
-.nav-links{display:flex;gap:26px;align-items:center;list-style:none}
+.nav-links{display:flex;gap:24px;align-items:center;list-style:none}
 .nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;opacity:.8;transition:opacity .2s}
 .nav-links a:hover{opacity:1}
 .btn{
   display:inline-block;text-decoration:none;font-weight:600;font-size:.95rem;
   padding:13px 26px;border-radius:999px;border:1.5px solid var(--ink);
-  transition:transform .2s,background .2s,color .2s,border-color .2s;
+  transition:transform .2s,background .2s,color .2s,border-color .2s,box-shadow .2s;
 }
 .btn:hover{transform:translateY(-2px)}
 .btn-solid{background:var(--cobalt);border-color:var(--cobalt);color:var(--white)}
-.btn-solid:hover{background:var(--cobalt-deep);border-color:var(--cobalt-deep)}
+.btn-solid:hover{background:var(--cobalt-deep);border-color:var(--cobalt-deep);box-shadow:0 10px 24px -10px rgba(30,79,255,.6)}
+.btn-peach{background:var(--peach);border-color:var(--peach);color:var(--ink)}
+.btn-peach:hover{background:#ffa371;border-color:#ffa371;box-shadow:0 10px 24px -10px rgba(255,180,138,.7)}
 .btn-ghost:hover{background:var(--ink);color:var(--sky)}
 .dark .btn-ghost{border-color:var(--sky);color:var(--sky)}
 .dark .btn-ghost:hover{background:var(--sky);color:var(--ink)}
-.nav-cta{padding:9px 20px;font-size:.86rem}
+.nav-cta{padding:9px 18px;font-size:.84rem}
 .menu-btn{display:none;background:none;border:0;cursor:pointer;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em}
 
 /* ---------- hero ---------- */
-.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 70px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:48px;align-items:center}
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 80px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;top:-220px;right:-180px;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(30,79,255,.14),transparent 65%);
+  animation:drift 14s ease-in-out infinite alternate;
+}
+.hero::after{
+  content:"";position:absolute;bottom:-260px;left:-160px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,180,138,.18),transparent 65%);
+  animation:drift 18s ease-in-out infinite alternate-reverse;
+}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.08)}}
+.hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:48px;align-items:center;position:relative;z-index:1}
 .hero h1{
   font-family:var(--display);font-weight:800;
   font-size:clamp(2.7rem,6.2vw,5rem);
@@ -107,18 +138,19 @@ nav{
   content:"";position:absolute;left:0;right:0;bottom:6px;height:.32em;
   background:var(--peach);z-index:-1;border-radius:3px;
 }
-.hero p.lede{font-size:1.14rem;max-width:520px;color:rgba(8,21,52,.74);margin-bottom:34px}
+.hero p.lede{font-size:1.14rem;max-width:540px;color:rgba(8,21,52,.74);margin-bottom:34px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-meta{margin-top:46px;display:flex;gap:30px;flex-wrap:wrap}
+.hero-meta{margin-top:46px;display:flex;gap:34px;flex-wrap:wrap}
 .hero-meta div{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(8,21,52,.55)}
-.hero-meta b{display:block;font-family:var(--display);font-size:1.5rem;letter-spacing:0;color:var(--ink);font-weight:700;margin-bottom:2px}
+.hero-meta b{display:block;font-family:var(--display);font-size:1.6rem;letter-spacing:0;color:var(--ink);font-weight:700;margin-bottom:2px}
 
-/* routing board */
+/* routing board v2 */
 .board{
   background:var(--ink);border-radius:22px;padding:26px 22px 18px;
   box-shadow:0 30px 70px -25px rgba(8,21,52,.45);
-  position:relative;
+  position:relative;will-change:transform;transition:box-shadow .3s;
 }
+.board:hover{box-shadow:0 40px 90px -25px rgba(30,79,255,.5)}
 .board-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .board-head .mono{color:rgba(234,241,252,.55)}
 .live-dot{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--peach)}
@@ -130,6 +162,8 @@ nav{
 @keyframes flow{to{stroke-dashoffset:-13}}
 .node-ring{animation:ring 2.4s ease-in-out infinite}
 @keyframes ring{0%,100%{opacity:.25}50%{opacity:.9}}
+.ans-flash{animation:ansflash 4s ease-in-out infinite}
+@keyframes ansflash{0%,55%{opacity:.4}65%,90%{opacity:1}100%{opacity:.4}}
 
 /* ---------- ticker ---------- */
 .ticker{
@@ -152,41 +186,50 @@ nav{
 .story-card h3{font-family:var(--display);font-size:1.4rem;font-weight:700;margin-bottom:14px;color:var(--peach)}
 .story-card p{color:rgba(234,241,252,.78);font-size:1rem;margin-bottom:14px}
 .story-card p:last-child{margin-bottom:0}
-.nl-points{display:flex;flex-direction:column;gap:18px}
+.nl-points{display:flex;flex-direction:column;gap:16px}
 .nl-point{
-  display:flex;gap:18px;padding:22px;border-radius:16px;
-  border:1px solid var(--line-light);transition:border-color .25s,background .25s;
+  padding:24px 26px;border-radius:16px;border:1px solid var(--line-light);
+  border-left:3px solid var(--cobalt);
+  transition:border-color .25s,background .25s,transform .25s;
 }
-.nl-point:hover{border-color:var(--peach);background:rgba(255,180,138,.05)}
-.nl-point .ic{
-  flex:0 0 44px;height:44px;border-radius:12px;background:var(--cobalt);
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
-}
-.nl-point h4{font-family:var(--display);font-size:1.05rem;font-weight:700;margin-bottom:4px}
-.nl-point p{font-size:.92rem;color:rgba(234,241,252,.7)}
+.nl-point:hover{border-left-color:var(--peach);background:rgba(255,180,138,.05);transform:translateX(6px)}
+.nl-point h4{font-family:var(--display);font-size:1.05rem;font-weight:700;margin-bottom:5px}
+.nl-point h4 span{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(234,241,252,.45);display:block;margin-bottom:6px;font-weight:400}
+.nl-point p{font-size:.93rem;color:rgba(234,241,252,.7)}
 .nl-cta{margin-top:46px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .nl-cta .note{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(234,241,252,.5)}
 
 /* ---------- work ---------- */
 .work-list{margin-top:50px;border-top:1px solid var(--line)}
 .work-item{
-  display:grid;grid-template-columns:200px 1fr auto;gap:26px;align-items:start;
+  display:grid;grid-template-columns:220px 1fr;gap:26px;align-items:start;
   padding:34px 10px;border-bottom:1px solid var(--line);
   transition:background .25s,padding-left .25s;
-  text-decoration:none;
 }
-.work-item:hover{background:rgba(30,79,255,.05);padding-left:20px}
-.work-item .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt);padding-top:6px}
+.work-item:hover{background:rgba(30,79,255,.05);padding-left:22px}
+.work-item .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt);padding-top:7px;line-height:1.7}
 .work-item h3{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-.work-item p{font-size:.97rem;color:rgba(8,21,52,.7);max-width:620px}
-.work-item .arrow{font-size:1.4rem;color:var(--cobalt);opacity:0;transform:translateX(-8px);transition:.25s;padding-top:6px}
-.work-item:hover .arrow{opacity:1;transform:none}
+.work-item h3 .badge{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--peach);color:var(--ink);border-radius:999px;padding:4px 12px;
+  vertical-align:middle;margin-left:10px;font-weight:500;white-space:nowrap;
+}
+.work-item p{font-size:.97rem;color:rgba(8,21,52,.7);max-width:680px}
 
 /* ---------- community ---------- */
-.imp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.photo-band{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;margin:50px 0 22px}
+.photo-card{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.photo-card img{width:100%;height:420px;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.photo-card:hover img{transform:scale(1.04)}
+.photo-card figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:34px 22px 16px;
+  background:linear-gradient(transparent,rgba(8,21,52,.85));
+  color:var(--sky);font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.imp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
 .imp-card{
   background:var(--white);border:1px solid var(--line);border-radius:18px;
-  padding:30px 26px;display:flex;flex-direction:column;gap:12px;
+  padding:32px 28px;display:flex;flex-direction:column;gap:12px;
   transition:transform .25s,box-shadow .25s,border-color .25s;
   position:relative;overflow:hidden;
 }
@@ -197,14 +240,13 @@ nav{
 }
 .imp-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -22px rgba(8,21,52,.28);border-color:transparent}
 .imp-card:hover::before{transform:scaleX(1)}
-.imp-card .stat{font-family:var(--display);font-weight:800;font-size:1.9rem;color:var(--cobalt);line-height:1}
-.imp-card h3{font-family:var(--display);font-size:1.12rem;font-weight:700}
-.imp-card p{font-size:.9rem;color:rgba(8,21,52,.68)}
-.imp-card .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(8,21,52,.45)}
-.imp-wide{grid-column:span 3;background:var(--ink);color:var(--sky);display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
-.imp-wide .stat{color:var(--peach);font-size:3.4rem}
-.imp-wide p{color:rgba(234,241,252,.75);font-size:1rem;max-width:680px}
-.imp-wide h3{color:var(--sky)}
+.imp-card h3{font-family:var(--display);font-size:1.22rem;font-weight:700}
+.imp-card p{font-size:.92rem;color:rgba(8,21,52,.68)}
+.imp-card a.card-link{color:var(--cobalt);font-weight:600;text-decoration:none;font-size:.88rem}
+.imp-card a.card-link:hover{text-decoration:underline}
+.imp-wide{grid-column:span 3;background:var(--ink);color:var(--sky)}
+.imp-wide h3{color:var(--peach);font-size:1.5rem}
+.imp-wide p{color:rgba(234,241,252,.78);font-size:1rem;max-width:840px}
 .imp-wide:hover{transform:none;box-shadow:0 24px 50px -22px rgba(8,21,52,.45)}
 
 /* ---------- research ---------- */
@@ -219,18 +261,38 @@ nav{
 .uni{
   font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid var(--line-light);border-radius:999px;padding:10px 20px;color:rgba(234,241,252,.8);
+  transition:border-color .25s,color .25s;
 }
+.uni:hover{border-color:var(--peach);color:var(--peach)}
+
+/* ---------- mission ---------- */
+.mis-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;margin-top:50px}
+.portrait{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -25px rgba(8,21,52,.4)}
+.portrait img{width:100%;height:560px;object-fit:cover;object-position:center 20%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.portrait:hover img{transform:scale(1.03)}
+.portrait::after{
+  content:"VIHARI · ATLANTA, GA";
+  position:absolute;left:0;right:0;bottom:0;padding:40px 22px 16px;
+  background:linear-gradient(transparent,rgba(8,21,52,.85));
+  color:var(--sky);font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;
+}
+.mis-copy p{font-size:1.04rem;color:rgba(8,21,52,.76);margin-bottom:16px}
+.mis-copy p b{color:var(--ink)}
+.mis-callout{
+  margin-top:26px;padding:26px 28px;border-radius:16px;
+  background:var(--white);border:1px solid var(--line);border-left:4px solid var(--peach);
+}
+.mis-callout p{margin:0;font-size:.98rem}
 
 /* ---------- offline ---------- */
 .off-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
 .off-card{
-  border:1px solid var(--line);border-radius:16px;padding:26px 22px;background:var(--white);
-  transition:transform .25s,border-color .25s;
+  border:1px solid var(--line);border-radius:16px;padding:28px 24px;background:var(--white);
+  transition:transform .25s,border-color .25s;border-top:3px solid var(--cobalt);
 }
 .off-card:hover{transform:rotate(-1.2deg) translateY(-4px);border-color:var(--cobalt)}
-.off-card .emoji{font-size:1.7rem;display:block;margin-bottom:12px}
-.off-card h3{font-family:var(--display);font-size:1.05rem;font-weight:700;margin-bottom:6px}
-.off-card p{font-size:.88rem;color:rgba(8,21,52,.68)}
+.off-card h3{font-family:var(--display);font-size:1.08rem;font-weight:700;margin-bottom:8px}
+.off-card p{font-size:.89rem;color:rgba(8,21,52,.68)}
 
 /* ---------- calendly ---------- */
 .cal-wrap{margin-top:46px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--white);box-shadow:0 24px 60px -30px rgba(8,21,52,.25)}
@@ -254,7 +316,7 @@ nav{
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:var(--sky);padding:80px 0 40px;border-top:1px solid var(--line-light)}
 .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:60px}
-.foot-grid h3{font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;max-width:520px;line-height:1.1}
+.foot-grid h3{font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;max-width:480px;line-height:1.1}
 .foot-grid h3 span{color:var(--peach)}
 .foot-links{display:flex;flex-direction:column;gap:10px}
 .foot-links a{text-decoration:none;color:rgba(234,241,252,.7);font-size:.95rem;transition:color .2s}
@@ -262,17 +324,16 @@ footer{background:var(--ink);color:var(--sky);padding:80px 0 40px;border-top:1px
 .foot-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:26px;border-top:1px solid var(--line-light)}
 .foot-base .mono{color:rgba(234,241,252,.4)}
 
-/* focus visibility */
 a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offset:3px;border-radius:6px}
 
 /* ---------- responsive ---------- */
 @media (max-width:960px){
-  .hero-grid,.nl-grid,.res-band,.sup-box{grid-template-columns:1fr}
+  .hero-grid,.nl-grid,.res-band,.sup-box,.mis-grid,.photo-band{grid-template-columns:1fr}
   .imp-grid{grid-template-columns:repeat(2,1fr)}
-  .imp-wide{grid-column:span 2;grid-template-columns:1fr}
+  .imp-wide{grid-column:span 2}
   .off-grid{grid-template-columns:repeat(2,1fr)}
   .work-item{grid-template-columns:1fr;gap:8px}
-  .work-item .arrow{display:none}
+  .portrait img{height:460px}
 }
 @media (max-width:640px){
   section{padding:80px 0}
@@ -283,10 +344,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
   .nav-links.open{display:flex}
   .menu-btn{display:block}
   .sup-box{padding:34px 26px}
+  .photo-card img{height:300px}
 }
 </style>
 </head>
 <body>
+
+<div class="signal" aria-hidden="true"><div class="signal-fill" id="signalFill"></div></div>
 
 <nav>
   <div class="wrap nav-inner">
@@ -296,8 +360,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
       <li><a href="#nextline">NextLine AI</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#community">Community</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#support">Support</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="btn btn-peach nav-cta" href="#support">Fund me</a></li>
       <li><a class="btn btn-solid nav-cta" href="#book">Book a call</a></li>
     </ul>
   </div>
@@ -315,13 +380,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         <a class="btn btn-ghost" href="#book">Book a meeting</a>
       </div>
       <div class="hero-meta">
-        <div><b>20+</b>Paying clients at NextLine</div>
-        <div><b>$15K</b>Raised for sustainability</div>
-        <div><b>1000s</b>Of families reached</div>
+        <div><b><span class="count" data-target="20">0</span>+</b>Paying clients at NextLine</div>
+        <div><b>$<span class="count" data-target="15">0</span>K</b>Raised for personal initiatives</div>
+        <div><b><span class="count" data-target="1000">0</span>s</b>Of families reached</div>
       </div>
     </div>
 
-    <div class="board rv">
+    <div class="board rv" id="board">
       <div class="board-head">
         <span class="mono">NextLine routing board</span>
         <span class="live-dot">Live</span>
@@ -331,14 +396,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         <g>
           <circle cx="60" cy="165" r="26" fill="none" stroke="#FFB48A" stroke-width="1.5"/>
           <circle cx="60" cy="165" r="34" fill="none" stroke="#FFB48A" stroke-width="1" class="node-ring"/>
-          <text x="60" y="171" text-anchor="middle" font-size="16" fill="#FFB48A">☎</text>
+          <circle cx="60" cy="165" r="5" fill="#FFB48A"/>
           <text x="60" y="218" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="rgba(234,241,252,.6)">CALLER</text>
         </g>
         <!-- missed business -->
         <g opacity=".45">
           <rect x="160" y="36" width="120" height="44" rx="10" fill="none" stroke="rgba(234,241,252,.4)" stroke-width="1.2"/>
-          <text x="220" y="55" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1" fill="rgba(234,241,252,.6)">ACME PEST CO.</text>
-          <text x="220" y="70" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" letter-spacing="1" fill="#FF7A7A">NO ANSWER ✕</text>
+          <text x="220" y="55" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1" fill="rgba(234,241,252,.6)">ORIGINAL BUSINESS</text>
+          <text x="220" y="70" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" letter-spacing="1" fill="#FF7A7A">NO ANSWER</text>
         </g>
         <path d="M 86 150 C 120 110, 140 80, 158 62" fill="none" stroke="rgba(234,241,252,.25)" stroke-width="1.4" stroke-dasharray="3 5"/>
         <!-- hub -->
@@ -354,10 +419,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
           <text x="385" y="102" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1" fill="rgba(234,241,252,.6)">PARTNER A</text>
           <text x="385" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" letter-spacing="1" fill="rgba(234,241,252,.45)">BUSY</text>
         </g>
-        <g>
+        <g class="ans-flash">
           <rect x="330" y="146" width="110" height="40" rx="10" fill="none" stroke="#FFB48A" stroke-width="1.6"/>
           <text x="385" y="164" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1" fill="#EAF1FC">PARTNER B</text>
-          <text x="385" y="177" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" letter-spacing="1" fill="#FFB48A">ANSWERED ✓</text>
+          <text x="385" y="177" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" letter-spacing="1" fill="#FFB48A">ANSWERED</text>
         </g>
         <g opacity=".5">
           <rect x="330" y="208" width="110" height="40" rx="10" fill="none" stroke="rgba(234,241,252,.4)" stroke-width="1.2"/>
@@ -367,7 +432,15 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         <path d="M 292 152 C 312 140, 316 116, 328 106" fill="none" stroke="rgba(234,241,252,.25)" stroke-width="1.2" stroke-dasharray="3 5"/>
         <path class="route-path" d="M 292 166 L 328 166" fill="none" stroke="#FFB48A" stroke-width="2"/>
         <path d="M 292 180 C 312 192, 316 216, 328 226" fill="none" stroke="rgba(234,241,252,.25)" stroke-width="1.2" stroke-dasharray="3 5"/>
-        <!-- baseline -->
+        <!-- traveling call signal -->
+        <circle r="6" fill="#FFB48A" opacity=".95">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M 60 165 L 230 165 L 385 166" keyPoints="0;0.52;0.52;1;1" keyTimes="0;0.35;0.45;0.8;1" calcMode="linear"/>
+          <animate attributeName="opacity" values=".95;.95;.5;.95;0" keyTimes="0;0.35;0.45;0.8;1" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="11" fill="none" stroke="#FFB48A" stroke-width="1.4" opacity=".5">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M 60 165 L 230 165 L 385 166" keyPoints="0;0.52;0.52;1;1" keyTimes="0;0.35;0.45;0.8;1" calcMode="linear"/>
+          <animate attributeName="opacity" values=".5;.5;.2;.5;0" keyTimes="0;0.35;0.45;0.8;1" dur="4s" repeatCount="indefinite"/>
+        </circle>
         <text x="230" y="300" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="2" fill="rgba(234,241,252,.45)">CALL ROUTED IN SECONDS · ZERO LOST CUSTOMERS</text>
       </svg>
       <div class="board-foot">Every missed call is revenue walking away. I built the layer that catches it.</div>
@@ -379,7 +452,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="tickerTrack">
     <span>4,000,000+ bagels rescued</span><span class="sep">●</span>
-    <span>$15,000 raised for sustainability in Atlanta</span><span class="sep">●</span>
+    <span>$15,000 raised for personal initiatives</span><span class="sep">●</span>
     <span>200+ youth engaged in climate action</span><span class="sep">●</span>
     <span>250+ students taught STEM</span><span class="sep">●</span>
     <span>20+ paying clients at NextLine AI</span><span class="sep">●</span>
@@ -400,43 +473,32 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
         <h3>It started with a snake in my garage.</h3>
         <p>One night I found a snake in my garage and started calling pest control companies. I called more than 25 of them. Not a single one picked up. The snake didn't care that it was after hours, and neither did I.</p>
         <p>That night I realized service businesses lose an enormous amount of revenue to a problem as simple as an unanswered phone. So my co-founder and I built the fix: an AI layer that answers instantly, qualifies the job, and routes it to whoever can actually take it.</p>
-        <p>We launched this year. Today NextLine serves 20+ paying businesses on monthly subscriptions, and the NextLine Network connects customers to available partners when the original company can't answer.</p>
+        <p>We launched this year. Today NextLine serves 20+ paying businesses on monthly subscriptions, and the NextLine Network connects customers to available partners when the original company can't answer. We're now expanding beyond home services into new industries, including healthcare, where we've already signed our first partner.</p>
       </div>
 
       <div class="nl-points">
-        <div class="nl-point rv">
-          <div class="ic">📞</div>
-          <div>
-            <h4>The problem</h4>
-            <p>Service businesses miss a huge share of inbound calls. Each missed call is a customer who books with a competitor in minutes.</p>
-          </div>
+        <div class="nl-point rv d1">
+          <h4><span>01</span>The problem</h4>
+          <p>Service businesses miss a huge share of inbound calls. Each missed call is a customer who books with a competitor in minutes.</p>
         </div>
-        <div class="nl-point rv">
-          <div class="ic">⚡</div>
-          <div>
-            <h4>The product</h4>
-            <p>AI answering that picks up every call, 24/7, books appointments, and captures jobs that would otherwise vanish.</p>
-          </div>
+        <div class="nl-point rv d2">
+          <h4><span>02</span>The product</h4>
+          <p>AI answering that picks up every call, 24/7, books appointments, and captures jobs that would otherwise vanish.</p>
         </div>
-        <div class="nl-point rv">
-          <div class="ic">🔀</div>
-          <div>
-            <h4>The network</h4>
-            <p>The NextLine Network: priority routing that sends overflow customers to vetted partner businesses, so every call ends in a booked job.</p>
-          </div>
+        <div class="nl-point rv d3">
+          <h4><span>03</span>The network</h4>
+          <p>The NextLine Network: priority routing that sends overflow customers to vetted partner businesses, so every call ends in a booked job.</p>
         </div>
-        <div class="nl-point rv">
-          <div class="ic">📈</div>
-          <div>
-            <h4>The traction</h4>
-            <p>Launched this year. 20+ paying clients on recurring subscriptions across pest control, HVAC, locksmith, and wildlife removal.</p>
-          </div>
+        <div class="nl-point rv d4">
+          <h4><span>04</span>The traction</h4>
+          <p>Launched this year. 20+ paying clients on recurring subscriptions, now expanding into healthcare with our first partner already signed.</p>
         </div>
       </div>
     </div>
 
     <div class="nl-cta rv">
       <a class="btn btn-solid" href="#book">Talk to me about NextLine</a>
+      <a class="btn btn-ghost" href="https://nextline-ai.com" target="_blank" rel="noopener">Visit nextline-ai.com</a>
       <span class="note">Currently raising · open to investors and partners</span>
     </div>
   </div>
@@ -447,16 +509,22 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
   <div class="wrap">
     <div class="line-tag rv">Line 02 · Experience</div>
     <h2 class="sec-title rv">Where I've built before.</h2>
-    <p class="sec-sub rv">Startups, research labs, classrooms, and one very busy bakery. Every one of these taught me something I use at NextLine today.</p>
+    <p class="sec-sub rv">Startups, research labs, and classrooms. Every one of these taught me something I use at NextLine today.</p>
 
     <div class="work-list">
+      <div class="work-item rv">
+        <span class="role">Marketing Development</span>
+        <div>
+          <h3>OpenSwarm <span class="badge">Backed by Entrepreneur First</span></h3>
+          <p>Worked on developing marketing at OpenSwarm, a startup backed by Entrepreneur First. Helped shape how a technical product gets positioned, communicated, and put in front of the right audience.</p>
+        </div>
+      </div>
       <div class="work-item rv">
         <span class="role">AI Solutions Developer</span>
         <div>
           <h3>Stratton Agency</h3>
           <p>Built and deployed AI voice agents, workflow automation systems, and lead generation tools for businesses across North America, working directly with founders and operators based in San Francisco. Delivered custom AI solutions to real clients across multiple industries.</p>
         </div>
-        <span class="arrow">→</span>
       </div>
       <div class="work-item rv">
         <span class="role">Software &amp; Marketing Associate</span>
@@ -464,7 +532,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
           <h3>Venture-backed biotech startup</h3>
           <p>Joined a biotech and entertainment startup valued at $75M after a $10M seed round. Implemented AI into core business operations and led marketing initiatives that scaled the brand to millions of viewers across social media.</p>
         </div>
-        <span class="arrow">→</span>
       </div>
       <div class="work-item rv">
         <span class="role">Core Technology Lead</span>
@@ -472,23 +539,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
           <h3>Andros</h3>
           <p>Oversaw all technical operations and development at an early-stage San Francisco startup, collaborating with a high-profile network of professionals, celebrities, and influencers building the platform from the ground up.</p>
         </div>
-        <span class="arrow">→</span>
       </div>
       <div class="work-item rv">
         <span class="role">STEM Intern</span>
         <div>
           <h3>Georgia Tech</h3>
-          <p>Facilitated STEM and leadership programming for 250+ students through GT CEISMC and other Georgia Tech organizations. Taught everything from introductory coding to mathematics, adapting curriculum complexity to each student's level.</p>
+          <p>Worked with Georgia Tech professors and students to facilitate STEM and leadership programming for 250+ students. Taught everything from introductory coding to mathematics, adapting curriculum complexity to each student's level while making technology genuinely exciting for young learners.</p>
         </div>
-        <span class="arrow">→</span>
-      </div>
-      <div class="work-item rv">
-        <span class="role">Store Manager</span>
-        <div>
-          <h3>Paris Baguette</h3>
-          <p>Managed daily operations of a bakery cafe in Atlanta: orders, food prep, workflow, and customer service. Nothing teaches you operations, urgency, and how real businesses run like a Saturday morning rush.</p>
-        </div>
-        <span class="arrow">→</span>
       </div>
     </div>
   </div>
@@ -501,55 +558,52 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
     <h2 class="sec-title rv">Impact measured in families, not followers.</h2>
     <p class="sec-sub rv">I've spent years building programs across Atlanta that fight food insecurity, teach kids, and put climate action in the hands of young people. This work is not a side note. It's the reason I build.</p>
 
+    <div class="photo-band">
+      <figure class="photo-card rv">
+        <img src="garden-1.jpg" alt="Volunteers working rows of crops at an urban farm in Atlanta" loading="lazy" />
+        <figcaption>Urban farming · Growing fresh produce for Atlanta families</figcaption>
+      </figure>
+      <figure class="photo-card rv d1">
+        <img src="garden-2.jpg" alt="Vihari working in the field at a community sustainability project" loading="lazy" />
+        <figcaption>On the ground · Sustainability work in the field</figcaption>
+      </figure>
+    </div>
+
     <div class="imp-grid">
       <div class="imp-card imp-wide rv">
-        <div class="stat">4M+</div>
-        <div>
-          <h3>Bagel Rescue</h3>
-          <p>Leader of a food recovery program that has rescued over 4 million bagels since 2020. Partnered with major shops including Bagel Boys and Einstein Bros. Bagels to collect surplus bagels and redistribute them to hospitals, homes for underserved communities, and organizations in need across Atlanta, cutting food waste while fighting food insecurity head-on.</p>
-        </div>
+        <h3>Bagel Rescue</h3>
+        <p>Leader of a food recovery program that has rescued over 4 million bagels since 2020. Partnered with major shops including Bagel Boys and Einstein Bros. Bagels to collect surplus bagels and redistribute them to hospitals, homes for underserved communities, and organizations in need across Atlanta, cutting food waste while fighting food insecurity head-on.</p>
       </div>
 
       <div class="imp-card rv">
-        <span class="tag">Founder</span>
-        <div class="stat">$5K</div>
         <h3>Green Ink Initiative</h3>
-        <p>Founded a youth-led environmental organization featured in VoyageATL, combining educational comics with hands-on urban farming. Secured a $5,000 grant with 21st Century Leaders to distribute fresh produce to families and reach children internationally through sustainability storytelling.</p>
+        <p>Founded a youth-led environmental organization featured in VoyageATL, combining educational comics with hands-on urban farming. Received funding in partnership with 21st Century Leaders to distribute fresh produce to families in need and reach children internationally through sustainability storytelling.</p>
+        <a class="card-link" href="https://voyageatl.com/interview/conversations-with-vihari-ayyalasomayajula/" target="_blank" rel="noopener">Read the VoyageATL feature →</a>
       </div>
 
-      <div class="imp-card rv">
-        <span class="tag">Grant Recipient</span>
-        <div class="stat">$10K</div>
+      <div class="imp-card rv d1">
         <h3>Green Teens</h3>
-        <p>Awarded a $10,000 Youth Climate Action Fund grant, presented by Atlanta Mayor Andre Dickens, to design sustainability initiatives for underserved communities. Engaged 200+ youth in hands-on environmental education and advocacy.</p>
+        <p>Received funding presented by Atlanta Mayor Andre Dickens to design and implement sustainability initiatives serving underserved communities across the Atlanta area. Engaged 200+ youth in hands-on environmental education and advocacy, driving real community impact through locally focused climate action.</p>
       </div>
 
-      <div class="imp-card rv">
-        <span class="tag">Volunteer since middle school</span>
-        <div class="stat">Yrs</div>
+      <div class="imp-card rv d2">
         <h3>Annandale Village</h3>
-        <p>Every Saturday morning, two hours supporting adults with disabilities through physical and enrichment activities designed to promote growth, well-being, and real social connection. The longest commitment I've ever kept.</p>
+        <p>Volunteered consistently since middle school, dedicating Saturday mornings to supporting adults with disabilities through physical and enrichment activities designed to promote growth, well-being, and real social connection. The longest commitment I've ever kept.</p>
       </div>
 
       <div class="imp-card rv">
-        <span class="tag">Weekend outreach</span>
-        <div class="stat">🍲</div>
         <h3>Home of Hope</h3>
         <p>Served food to families in need on weekends, visiting multiple homes and partnering with community organizations to expand outreach and provide direct support where it's needed most.</p>
       </div>
 
-      <div class="imp-card rv">
-        <span class="tag">International nonprofit</span>
-        <div class="stat">6</div>
+      <div class="imp-card rv d1">
         <h3>Sierra Project Foundation</h3>
-        <p>Interned with a nonprofit spanning six countries (Ecuador, Chile, India, Liberia, Ghana, US) that teaches youth about health through comic-based storytelling. Helped create and distribute educational comics for underserved communities worldwide.</p>
+        <p>Interned with an international nonprofit spanning Ecuador, Chile, India, Liberia, Ghana, and the US that teaches youth about health through comic-based storytelling. Helped create and distribute educational comics for underserved communities worldwide.</p>
       </div>
 
-      <div class="imp-card rv">
-        <span class="tag">Selected participant</span>
-        <div class="stat">21CL</div>
-        <h3>21st Century Leaders</h3>
-        <p>Selected for the 21CL Summer Institute, a program connecting technology and leadership. Gained hands-on experience and mentorship building both technical depth and the leadership capacity to use it well.</p>
+      <div class="imp-card rv d2">
+        <h3>Georgia Tech STEM Outreach</h3>
+        <p>Brought coding and STEM education to students in grades 1 through 9 alongside Georgia Tech professors and students, designing engaging hands-on lessons that spark lasting interest in technology and science.</p>
       </div>
     </div>
   </div>
@@ -561,7 +615,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
     <div class="line-tag rv">Line 04 · Research</div>
     <div class="res-band">
       <blockquote class="rv">"The most interesting problems live where <span>sustainability</span> and <span>technology</span> refuse to stay in their own lanes."</blockquote>
-      <div class="res-detail rv">
+      <div class="res-detail rv d1">
         <p>I'm currently conducting research with professors at NYU and Stanford focused on merging sustainability and technology: how software, data, and AI can be pointed at climate and community problems instead of just convenience.</p>
         <p>It's the academic version of everything else on this page. Green Ink and Green Teens taught me the problems. The research is how I'm learning to solve them at scale.</p>
         <div class="uni-row">
@@ -574,30 +628,49 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
   </div>
 </section>
 
-<!-- ================= OFFLINE ================= -->
-<section id="offline">
+<!-- ================= MISSION ================= -->
+<section id="mission">
   <div class="wrap">
-    <div class="line-tag rv">Line 05 · Off the clock</div>
+    <div class="line-tag rv">Line 05 · The mission</div>
+    <h2 class="sec-title rv">Where this is all going.</h2>
+    <p class="sec-sub rv">NextLine AI is the business I'm building today. Here's the mission I intend to pursue next, and why I'm already positioned to pursue it.</p>
+
+    <div class="mis-grid">
+      <div class="portrait rv">
+        <img src="vihari.jpg" alt="Vihari Ayyalasomayajula" loading="lazy" />
+      </div>
+      <div class="mis-copy rv d1">
+        <p><b>AI-driven sustainability and precision agriculture.</b> The core idea is using AI, robotics, and biology together to reduce pesticide use, increase crop yields, and bring food security solutions to underserved communities across the US and globally. It's a massive market with deep social impact, and it's the natural continuation of everything I've already built.</p>
+        <p>I've received over $15,000 in funding in the Atlanta area, with $10,000 of that coming directly from Atlanta Mayor Andre Dickens. I've conducted research with professors at NYU and Stanford on merging technology with sustainability. And I've directly impacted thousands of families through this work, not in theory, but on the ground: urban farms, food recovery, and youth climate programs across Atlanta.</p>
+        <p>That combination of funding, research relationships, and real operational experience is rare in this space. I intend to use all of it.</p>
+        <div class="mis-callout">
+          <p>Working on something at the intersection of AI, agriculture, or sustainability? I want to hear about it. <a href="#book" style="color:var(--cobalt);font-weight:600">Book a call</a> and let's compare notes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFFLINE ================= -->
+<section id="offline" style="padding-top:0">
+  <div class="wrap">
+    <div class="line-tag rv">Line 06 · Off the clock</div>
     <h2 class="sec-title rv">When I'm not building.</h2>
 
     <div class="off-grid">
       <div class="off-card rv">
-        <span class="emoji">🎾</span>
         <h3>Varsity tennis captain</h3>
         <p>Played varsity since freshman year, made captain as a sophomore, and competed at the national level. I switched schools just to keep playing. That's how much I wanted it.</p>
       </div>
-      <div class="off-card rv">
-        <span class="emoji">🏀</span>
+      <div class="off-card rv d1">
         <h3>Basketball</h3>
-        <p>Pickup games, league nights, and a deeply held opinion about every playoff series. Staying athletic keeps the rest of this list possible.</p>
+        <p>Playing at the gym with friends and watching the NBA. Staying athletic keeps everything else on this page possible.</p>
       </div>
-      <div class="off-card rv">
-        <span class="emoji">🎬</span>
+      <div class="off-card rv d2">
         <h3>Movies</h3>
         <p>A serious film lover. Great storytelling shows up everywhere in my work, from pitch decks to educational comics for kids.</p>
       </div>
-      <div class="off-card rv">
-        <span class="emoji">🧠</span>
+      <div class="off-card rv d3">
         <h3>What I'm studying</h3>
         <p>Computer science, business, engineering, and cybersecurity. Different disciplines, one goal: understanding how things work and how to build them better.</p>
       </div>
@@ -608,9 +681,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 <!-- ================= BOOK ================= -->
 <section id="book" style="background:var(--white)">
   <div class="wrap">
-    <div class="line-tag rv">Line 06 · Get in touch</div>
+    <div class="line-tag rv">Line 07 · Get in touch</div>
     <h2 class="sec-title rv">Book a meeting with me.</h2>
-    <p class="sec-sub rv">Investor, partner, mentor, collaborator, or just curious. Pick a time that works and let's talk. I respond to every conversation I take.</p>
+    <p class="sec-sub rv">Investor, partner, mentor, collaborator, or just curious. Pick a time that works and let's talk.</p>
 
     <div class="cal-wrap rv">
       <!-- Calendly inline widget begin -->
@@ -626,12 +699,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
   <div class="wrap">
     <div class="sup-box rv">
       <div>
-        <div class="line-tag" style="color:var(--peach)">Line 07 · Support</div>
+        <div class="line-tag" style="color:var(--peach)">Line 08 · Support</div>
         <h3>Back the work.</h3>
         <p>NextLine AI is raising, and my community projects always need fuel. If you believe in what's on this page, you can support it directly. Every contribution goes straight into building: product, outreach, and programs that reach real families.</p>
       </div>
       <div class="sup-actions">
-        <a class="btn btn-solid" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" rel="noopener">Support my projects</a>
+        <a class="btn btn-peach" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" rel="noopener">Support my projects</a>
         <a class="btn btn-ghost" href="#book">Talk about investing in NextLine</a>
         <span class="micro">Payments secured by Stripe</span>
       </div>
@@ -640,23 +713,24 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--peach);outline-offs
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer>
+<footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
       <h3>Let's build something that <span>answers</span>.</h3>
+      <div class="foot-links">
+        <span class="mono" style="margin-bottom:8px;color:rgba(234,241,252,.45)">Contact</span>
+        <a href="tel:+16099475284">(609) 947-5284</a>
+        <a href="mailto:vihari.ayyalasomayajula@gmail.com">vihari.ayyalasomayajula@gmail.com</a>
+        <a href="https://www.linkedin.com/in/vihari-ayyalasomayajula-b4b047334" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://calendly.com/vihari-ayyalasomayajula/book-a-meeting-with-me" target="_blank" rel="noopener">Calendly</a>
+      </div>
       <div class="foot-links">
         <span class="mono" style="margin-bottom:8px;color:rgba(234,241,252,.45)">Navigate</span>
         <a href="#nextline">NextLine AI</a>
         <a href="#work">Work</a>
         <a href="#community">Community</a>
-        <a href="#research">Research</a>
-        <a href="#book">Book a call</a>
-      </div>
-      <div class="foot-links">
-        <span class="mono" style="margin-bottom:8px;color:rgba(234,241,252,.45)">Elsewhere</span>
-        <a href="mailto:vihari.ayyalasomayajula@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://calendly.com/vihari-ayyalasomayajula/book-a-meeting-with-me" target="_blank" rel="noopener">Calendly</a>
+        <a href="#mission">Mission</a>
+        <a href="#support">Support</a>
       </div>
     </div>
     <div class="foot-base">
@@ -672,6 +746,48 @@ const obs = new IntersectionObserver((es)=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target);} });
 },{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// scroll signal line
+const fill = document.getElementById('signalFill');
+const onScroll = ()=>{
+  const h = document.documentElement;
+  const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  fill.style.width = (p*100).toFixed(2) + '%';
+};
+document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// hero stat count-up
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const counters = document.querySelectorAll('.count');
+const cObs = new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    cObs.unobserve(e.target);
+    const target = +e.target.dataset.target;
+    if(reduce){ e.target.textContent = target; return; }
+    const dur = 1400, t0 = performance.now();
+    const tick = (t)=>{
+      const k = Math.min((t-t0)/dur, 1);
+      const ease = 1 - Math.pow(1-k, 3);
+      e.target.textContent = Math.round(target*ease);
+      if(k<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+},{threshold:.5});
+counters.forEach(c=>cObs.observe(c));
+
+// routing board tilt (desktop, motion allowed)
+const board = document.getElementById('board');
+if(board && !reduce && matchMedia('(pointer:fine)').matches){
+  board.addEventListener('mousemove',(ev)=>{
+    const r = board.getBoundingClientRect();
+    const x = (ev.clientX - r.left)/r.width - .5;
+    const y = (ev.clientY - r.top)/r.height - .5;
+    board.style.transform = `perspective(900px) rotateY(${x*6}deg) rotateX(${ -y*6}deg)`;
+  });
+  board.addEventListener('mouseleave',()=>{ board.style.transform=''; });
+}
 
 // ticker duplication for seamless loop
 const t = document.getElementById('tickerTrack');
